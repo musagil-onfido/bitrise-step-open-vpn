@@ -44,6 +44,11 @@ case "$OSTYPE" in
     service openvpn start client > /dev/null 2>&1
     sleep 10
 
+    echo "LOG ################################"
+    echo "$(sudo cat /var/log/openvpn.log)"
+    echo "STATUS ################################"
+    echo "$(sudo cat /var/log/openvpn-status.log)"
+
     if ifconfig | grep tun0 > /dev/null
     then
       echo "VPN connection succeeded"
@@ -60,6 +65,11 @@ case "$OSTYPE" in
 
     sudo openvpn --config client.ovpn > /dev/null 2>&1 &
     sleep 5
+
+    echo "LOG ################################"
+    echo "$(sudo cat /var/log/openvpn.log)"
+    echo "STATUS ################################"
+    echo "$(sudo cat /var/log/openvpn-status.log)"
 
     if ifconfig -l | grep utun0 > /dev/null
     then
