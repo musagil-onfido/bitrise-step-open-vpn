@@ -64,7 +64,7 @@ case "$OSTYPE" in
     echo ${user_pass} | base64 -D -o login.conf > /dev/null 2>&1
 
     sudo openvpn --config client.ovpn > /dev/null 2>&1 &
-    sleep 5
+    sleep 50
 
     echo "LOG ################################"
     echo "$(sudo cat /var/log/openvpn.log)"
